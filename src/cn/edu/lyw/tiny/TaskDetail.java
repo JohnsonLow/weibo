@@ -24,7 +24,7 @@ public class TaskDetail extends Activity implements OnClickListener{
 	private Map<String,Object> missionInfo ;
 	private Map<String,Object> handleInfo ;
 	private static final String KEY_MISSION = "missionInfo";
-	private static final String KEY_HANDLE = "missionInfo";
+	private static final String KEY_HANDLE = "handleInfo";
 	private static final String DEFAULT_TEXT = "";
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -51,8 +51,10 @@ public class TaskDetail extends Activity implements OnClickListener{
 			@Override
 			protected Void doInBackground(Void... params) {
 				Map<String,Map<String,Object>> infos = MissionUtil.getMission(taskId);
-				missionInfo = infos.get(KEY_MISSION);
-				handleInfo = infos.get(KEY_HANDLE);
+				if(infos != null){
+					missionInfo = infos.get(KEY_MISSION);
+					handleInfo = infos.get(KEY_HANDLE);
+				}
 				return null;
 			}
 			protected void onPostExecute(Void result) {

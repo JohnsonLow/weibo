@@ -52,7 +52,7 @@ public class Welcome extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		 mWeiboAuth = new WeiboAuth(this, ConstantUtil.CONSUMER_KEY, ConstantUtil.REDIRECT_URL, ConstantUtil.SCOPE);
+		mWeiboAuth = new WeiboAuth(this, ConstantUtil.CONSUMER_KEY, ConstantUtil.REDIRECT_URL, ConstantUtil.SCOPE);
 		setContentView(R.layout.welcome);
 	}
 
@@ -63,12 +63,10 @@ public class Welcome extends Activity {
 	 *            View组件
 	 */
 	public void welcome_login(View v) {
-		mSpinner = new ProgressDialog(this);
+		mWeiboAuth.authorize(new AuthDialogListener(), WeiboAuth.OBTAIN_AUTH_CODE);
+		mSpinner = new ProgressDialog(v.getContext());
 		mSpinner.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		mSpinner.setMessage("正在进行授权认证");
-		mSpinner.show();
-		mWeiboAuth.authorize(new AuthDialogListener(), WeiboAuth.OBTAIN_AUTH_CODE);
-		
 	}
 
 	/**
@@ -77,6 +75,9 @@ public class Welcome extends Activity {
 	private void enterMainWeibo() {
 		Intent intent = new Intent(Welcome.this, Whatsnew.class);
 		startActivity(intent);
+		if(mSpinner.isShowing()){
+			mSpinner.dismiss();
+	    }
 		Welcome.this.finish();
 	}
 
@@ -145,28 +146,22 @@ public class Welcome extends Activity {
      * @param authCode  授权 Code，该 Code 是一次性的，只能被获取一次 Token
      */
 	public void fetchTokenAsync(String code) {
+		mSpinner.show();
 		WeiboParameters requestParams = new WeiboParameters();
         requestParams.add(WBConstants.AUTH_PARAMS_CLIENT_ID, ConstantUtil.CONSUMER_KEY);
         requestParams.add(WBConstants.AUTH_PARAMS_CLIENT_SECRET, ConstantUtil.CONSUMER_SECRET);
         requestParams.add(WBConstants.AUTH_PARAMS_GRANT_TYPE, "authorization_code");
         requestParams.add(WBConstants.AUTH_PARAMS_CODE,          code);
         requestParams.add(WBConstants.AUTH_PARAMS_REDIRECT_URL,  ConstantUtil.REDIRECT_URL);
-        
-       
         AsyncWeiboRunner.request(WeiboConfig.getValue("accessTokenURL"), requestParams, "POST", new RequestListener() {
             @Override
             public void onComplete(String response) {
                 // 获取 Token 成功
                 Oauth2AccessToken token = Oauth2AccessToken.parseAccessToken(response);
-                if(mSpinner.isShowing()){
-                	mSpinner.dismiss();
-                }
                 if (token != null && token.isSessionValid()) {
-                	ToastUtil.showShortToast(getApplicationContext(), "授权成功");
         			UserDataUtil.updateUserData(Welcome.this, new UserData(token));
         			enterMainWeibo();
                 } else {
-                	ToastUtil.showShortToast(getApplicationContext(), "授权失败");
                     LogUtil.e("LOGIN_ERROR", "Failed to receive access token");
                 }
             }
@@ -184,7 +179,6 @@ public class Welcome extends Activity {
             @Override
             public void onError(WeiboException e) {
                 LogUtil.e("LOGIN_ERROR", "WeiboException： " + e.getMessage());
-                ToastUtil.showShortToast(getApplicationContext(), "授权异常");
             }
         });
 	}

@@ -15,14 +15,7 @@ import android.widget.LinearLayout;
 import cn.edu.lyw.tiny.util.ToastUtil;
 
 /**
- * @filename DialogExit.java
- * @package cn.edu.csu.iteliter
- * @project TinyWeibo 微微博
  * @description 退出的对话框
- * @author 胡家威
- * @team China ITElite Team
- * @email yinger090807@qq.com
- * @updatetime 2012-12-21 下午12:37:13
  * @version 1.0
  * 
  */

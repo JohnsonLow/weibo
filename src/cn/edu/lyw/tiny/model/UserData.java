@@ -6,22 +6,17 @@
  */
 package cn.edu.lyw.tiny.model;
 
+import java.io.Serializable;
+
 import com.sina.weibo.sdk.auth.Oauth2AccessToken;
 
 
 /**
  * 
- * @filename UserData.java
- * @package cn.edu.csu.iteliter.model
- * @project TinyWeibo 微微博
  * @description 用户数据信息
- * @author 胡家威
- * @team China ITElite Team
- * @email yinger090807@qq.com
- * @updatetime 2012-12-21 上午11:44:17
  * @version 1.0
  */
-public class UserData {
+public class UserData implements Serializable{
 
 	/** access token. */
 	private String token;
@@ -46,6 +41,8 @@ public class UserData {
 
 	/** 是否第一次运行. */
 	private boolean firstrun = true;
+
+	private int handlerId;
 
 	/**
 	 * 构造函数.
@@ -229,4 +226,17 @@ public class UserData {
 		this.firstrun = firstrun;
 	}
 
+	/**
+	 * @return the handlerId
+	 */
+	public int getHandlerId() {
+		return handlerId;
+	}
+
+	/**
+	 * @param handlerId the handlerId to set
+	 */
+	public void setHandlerId(int handlerId) {
+		this.handlerId = handlerId;
+	}
 }

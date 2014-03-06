@@ -364,7 +364,6 @@ public class MainWeibo extends Activity implements ConstantUtil {
 						android.view.ViewGroup.LayoutParams.WRAP_CONTENT);
 				menuWindow.showAtLocation(findViewById(R.id.rl_mainweibo), Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
 				btn_menu_close = (LinearLayout) mainMenu.findViewById(R.id.btn_menu_close);
-
 				btn_menu_close.setOnClickListener(new View.OnClickListener() {
 					@Override
 					public void onClick(View arg0) {

@@ -11,31 +11,9 @@ import cn.edu.lyw.tiny.model.UserData;
  * 
  */
 public class UserDataUtil {
-
-	/** 用户ID */
-	public static final String USERID = "userid";
-
-	/** access token */
-	public static final String TOKEN = "token";
-
-	/** token过期时间 */
-	public static final String EXPIRESTIME = "expirestime";
-
-	/** 用户的头像URL */
-	public static final String PROFILE = "profileimage";
-
-	/** 用户的昵称 */
-	public static final String NICKNAME = "nickname";
-
-	/** 是否关注作者微博 */
-	public static final String FOLLOW = "follow";
-
-	/** 是否开启声音效果 */
-	public static final String SOUND = "sound";
-
-	/** 是否是第一次运行 */
-	public static final String FIRSTRUN = "firstrun";
-
+	public static final String USERDATA = "userData";
+	
+	private static UserData userData;
 	/**
 	 * 检查accessToken是否有效
 	 * 
@@ -49,7 +27,6 @@ public class UserDataUtil {
 		long expirestime = Long.parseLong(time);
 		return (!TextUtils.isEmpty(accessToken) && (expirestime == 0 || (System.currentTimeMillis() < expirestime)));
 	}
-
 	/**
 	 * 更新userData信息
 	 * 
@@ -61,15 +38,11 @@ public class UserDataUtil {
 	public static void updateUserData(Context context, UserData userData) {
 		SharedPreferences.Editor editor = context.getSharedPreferences(ConstantUtil.TINYWEIBO, Context.MODE_PRIVATE)
 				.edit();
-		editor.putString(USERID, userData.getUserid());
-		editor.putString(TOKEN, userData.getToken());
-		editor.putString(EXPIRESTIME, userData.getExpirestime());
-		editor.putString(NICKNAME, userData.getNickname());
-		editor.putString(PROFILE, userData.getProfileimage());
-		editor.putBoolean(FOLLOW, userData.isFollowauthor());
-		editor.putBoolean(SOUND, userData.isSoundPlay());
-		editor.putBoolean(FIRSTRUN, userData.isFirstrun());
-		editor.commit();
+		synchronized (UserDataUtil.class) {
+			UserDataUtil.userData = userData;
+			editor.putString(USERDATA, JSONUtils.getJSONString(userData));
+			editor.commit();
+		}
 	}
 
 	/**
@@ -94,6 +67,11 @@ public class UserDataUtil {
 	 */
 	public static UserData readUserData(Context context) {
 		SharedPreferences pref = context.getSharedPreferences(ConstantUtil.TINYWEIBO, Context.MODE_PRIVATE);
-		return new UserData(pref.getString(TOKEN, ""), pref.getString(EXPIRESTIME, "0"), pref.getString(USERID, ""));
+		synchronized (UserDataUtil.class) {
+			if(userData == null){
+				userData = JSONUtils.getObject(pref.getString(USERDATA, ""), UserData.class);
+			}
+		}
+		return userData;
 	}
 }

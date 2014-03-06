@@ -223,4 +223,8 @@
     <!-- mission string -->
     <string name="no_task">没有要处理的任务哟！</string>
     <string name="loading_task">正在加载任务...</string>
+    <!-- bind -->
+    <string name="bind_title">绑定微博管理系统账号</string>
+    <string name="bind_warn">如果没有账号，可联系管理员进行分配</string>
+    <string name="bind">确认绑定</string>
 </resources>

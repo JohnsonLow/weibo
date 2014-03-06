@@ -43,7 +43,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="25dp"
         android:background="@drawable/login_editbox"
-        android:hint="新浪微博账号 (itelite2012@sina.com)"
+        android:hint="新浪微博账号 "
         android:singleLine="true"
         android:textColor="#000"
         android:textSize="15sp" />
@@ -57,7 +57,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="25dp"
         android:background="@drawable/login_editbox"
-        android:hint="密码 (itelite)"
+        android:hint="密码 "
         android:password="true"
         android:singleLine="true"
         android:textColor="#000"
