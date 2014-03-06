@@ -1,0 +1,90 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  Internal Error (classFileParser.cpp:3494), pid=12804, tid=12776
+#  Error: ShouldNotReachHere()
+#
+# JRE version: 6.0_37-b06
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (20.12-b01 mixed mode windows-amd64 compressed oops)
+# If you would like to submit a bug report, please visit:
+#   http://java.sun.com/webapps/bugreport/crash.jsp
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000000000032c000):  JavaThread "Unknown thread" [_thread_in_vm, id=12776, stack(0x0000000002420000,0x0000000002520000)]
+
+Stack: [0x0000000002420000,0x0000000002520000]
+[error occurred during error reporting (printing stack bounds), id 0xc0000005]
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+
+Other Threads:
+
+=>0x000000000032c000 (exited) JavaThread "Unknown thread" [_thread_in_vm, id=12776, stack(0x0000000002420000,0x0000000002520000)]
+
+VM state:not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Dynamic libraries:
+0x0000000000400000 - 0x000000000042f000 	D:\java\javahome\jdk\bin\javaw.exe
+0x0000000076f50000 - 0x00000000770f9000 	C:\Windows\SYSTEM32\ntdll.dll
+0x0000000076870000 - 0x000000007698f000 	C:\Windows\system32\kernel32.dll
+0x000007fefd460000 - 0x000007fefd4cb000 	C:\Windows\system32\KERNELBASE.dll
+0x000007fefed40000 - 0x000007fefee1b000 	C:\Windows\system32\ADVAPI32.dll
+0x000007fefe730000 - 0x000007fefe7cf000 	C:\Windows\system32\msvcrt.dll
+0x000007fefec10000 - 0x000007fefec2f000 	C:\Windows\SYSTEM32\sechost.dll
+0x000007fefe7d0000 - 0x000007fefe8fd000 	C:\Windows\system32\RPCRT4.dll
+0x0000000076cf0000 - 0x0000000076dea000 	C:\Windows\system32\USER32.dll
+0x000007fefeef0000 - 0x000007fefef57000 	C:\Windows\system32\GDI32.dll
+0x000007fefe680000 - 0x000007fefe68e000 	C:\Windows\system32\LPK.dll
+0x000007fefee20000 - 0x000007fefeee9000 	C:\Windows\system32\USP10.dll
+0x000007fefe950000 - 0x000007fefe97e000 	C:\Windows\system32\IMM32.DLL
+0x000007fefec30000 - 0x000007fefed39000 	C:\Windows\system32\MSCTF.dll
+0x000007fefd380000 - 0x000007fefd3af000 	C:\Windows\system32\nvinitx.dll
+0x000000000f000000 - 0x000000000f006000 	C:\Program Files\NVIDIA Corporation\CoProcManager\_etoured.dll
+0x000007fef9aa0000 - 0x000007fef9aff000 	C:\Program Files\NVIDIA Corporation\CoProcManager\nvd3d9wrapx.dll
+0x000007fefefe0000 - 0x000007feff1b7000 	C:\Windows\system32\SETUPAPI.dll
+0x000007fefd660000 - 0x000007fefd696000 	C:\Windows\system32\CFGMGR32.dll
+0x000007fefe5a0000 - 0x000007fefe677000 	C:\Windows\system32\OLEAUT32.dll
+0x000007fefea00000 - 0x000007fefec03000 	C:\Windows\system32\ole32.dll
+0x000007fefd4d0000 - 0x000007fefd4ea000 	C:\Windows\system32\DEVOBJ.dll
+0x000007fef9a50000 - 0x000007fef9a96000 	C:\Program Files\NVIDIA Corporation\CoProcManager\nvdxgiwrapx.dll
+0x000000006d8b0000 - 0x000000006e06b000 	D:\java\javahome\jdk\jre\bin\server\jvm.dll
+0x000007fef9e30000 - 0x000007fef9e6b000 	C:\Windows\system32\WINMM.dll
+0x000000006d820000 - 0x000000006d82e000 	D:\java\javahome\jdk\jre\bin\verify.dll
+0x000000006d450000 - 0x000000006d477000 	D:\java\javahome\jdk\jre\bin\java.dll
+0x000000006d870000 - 0x000000006d882000 	D:\java\javahome\jdk\jre\bin\zip.dll
+0x0000000077110000 - 0x0000000077117000 	C:\Windows\system32\PSAPI.DLL
+
+VM Arguments:
+jvm_args: -Dfile.encoding=UTF-8 -Xbootclasspath:D:\java\andorid\adt-bundle-windows\sdk\platforms\android-16\android.jar 
+java_command: cn.edu.csu.iteliter.model.Missions
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=D:\java\javahome\jdk
+PATH=D:/java/javahome/jdk/bin/../jre/bin/server;D:/java/javahome/jdk/bin/../jre/bin;D:/java/javahome/jdk/bin/../jre/lib/amd64;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Windows Live\Shared;D:\java\javahome\jdk\bin;D:\java\javahome\jdk\lib;;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x64;D:\java\andorid\adt-bundle-windows\eclipse;
+USERNAME=windy
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 42 Stepping 7, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 7 , 64 bit Build 7601 Service Pack 1
+
+CPU:total 8 (4 cores per cpu, 2 threads per core) family 6 model 42 stepping 7, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, ht
+
+Memory: 4k page, physical 8290356k(3185552k free), swap 16578852k(10417212k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (20.12-b01) for windows-amd64 JRE (1.6.0_37-b06), built on Sep 24 2012 11:45:14 by "java_re" with MS VC++ 8.0 (VS2005)
+
+time: Tue Feb 25 22:21:08 2014
+elapsed time: 0 seconds
+
