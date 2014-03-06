@@ -1,0 +1,143 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cn.edu.lyw.tiny"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="15" />
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <application
+        android:icon="@drawable/tinyweibo_96"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="cn.edu.lyw.tiny.Appstart"
+            android:label="@string/app_name"
+            android:theme="@style/Anim_style2" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="cn.edu.lyw.tiny.Welcome"
+            android:theme="@style/Anim_style2" >
+        </activity>
+        <activity
+            android:name="cn.edu.lyw.tiny.Whatsnew"
+            android:theme="@style/Anim_style2" />
+        <activity
+            android:name="cn.edu.lyw.tiny.WhatsnewDoor"
+            android:theme="@style/Anim_style2" />
+        <activity
+            android:name="cn.edu.lyw.tiny.MainWeibo"
+            android:theme="@style/Anim_style2" >
+        </activity>
+        <activity
+            android:name="cn.edu.lyw.tiny.HomeTopRightDialog"
+            android:theme="@style/MyDialogStyleTop" >
+        </activity>
+        <activity
+            android:name="cn.edu.lyw.tiny.HomeWeiboComment"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="cn.edu.lyw.tiny.HomeWeiboRepost"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="cn.edu.lyw.tiny.HomeWeiboWrite"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="cn.edu.lyw.tiny.HomeWeiboWriteImage"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="cn.edu.lyw.tiny.HomeWeiboWriteTopRightDialog"
+            android:theme="@style/MyDialogStyleTop" >
+        </activity>
+        <activity
+            android:name="cn.edu.lyw.tiny.WeiboWriteImage"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="cn.edu.lyw.tiny.ViewWeiboItem"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="cn.edu.lyw.tiny.ShakeWeibo"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="cn.edu.lyw.tiny.SettingsAboutUs"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="cn.edu.lyw.tiny.TaskList"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="cn.edu.lyw.tiny.TaskDetail"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="cn.edu.lyw.tiny.DialogExit"
+            android:theme="@style/MyDialogStyle" >
+        </activity>
+        <activity
+            android:name="cn.edu.lyw.tiny.DialogSettingsExit"
+            android:theme="@style/MyDialogStyle" >
+        </activity>
+
+        <!-- msc -->
+        <!-- AVIARY FEATHER ENTRIES -->
+        <!-- feather activity must be defined here -->
+        <activity
+            android:name="com.aviary.android.feather.FeatherActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:hardwareAccelerated="true"
+            android:largeHeap="true"
+            android:screenOrientation="unspecified" />
+        <!-- android:theme="@style/FeatherDefaultTheme.Custom" 
+        -->
+        <!--  change theme here 这里很重要，如果不是这个style会报错！ -->
+
+
+        <!-- receiver. gets the newly installed plugins -->
+        <receiver
+            android:name="com.aviary.android.feather.receivers.FeatherSystemReceiver"
+            android:exported="true"
+            android:process=":feather_system_receiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <action android:name="android.intent.action.PACKAGE_REPLACED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Required for the hi-res image processing -->
+        <!-- authorities can have the value you prefer -->
+        <!-- 如果没有会报异常，一个关于hiresservice的异常 -->
+        <provider
+            android:name="com.aviary.android.feather.library.providers.FeatherContentProvider"
+            android:authorities="com.aviary.launcher.HiResProvider"
+            android:exported="false" >
+        </provider>
+    </application>
+
+</manifest>
