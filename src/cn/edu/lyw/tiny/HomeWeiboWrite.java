@@ -43,14 +43,7 @@ import com.iflytek.ui.RecognizerDialog;
 import com.iflytek.ui.RecognizerDialogListener;
 
 /**
- * @filename HomeWeiboWrite.java
- * @package cn.edu.csu.iteliter
- * @project TinyWeibo 微微博
  * @description 写微博界面
- * @author 胡家威
- * @team China ITElite Team
- * @email yinger090807@qq.com
- * @updatetime 2012-12-21 下午2:16:34
  * @version 1.0
  * 
  */

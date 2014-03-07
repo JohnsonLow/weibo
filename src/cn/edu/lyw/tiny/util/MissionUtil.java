@@ -10,6 +10,7 @@ import java.util.Map;
 
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.GetMethod;
+import org.apache.commons.httpclient.methods.PostMethod;
 
 import weibo4j.util.WeiboConfig;
 import android.util.Log;
@@ -33,6 +34,18 @@ public class MissionUtil {
 	 * 任务详情类型
 	 */
 	private static final int URL_INFO = 2;
+	
+	/**
+	 * 检查是否已绑定
+	 */
+	private static final int URL_CHECK = 3;
+	
+	
+	/**
+	 * 获取任务列表
+	 * @param handlerId
+	 * @return
+	 */
 	@SuppressWarnings("unchecked")
 	public static List<Map<String, Object>> getMissionList(int handlerId){
 		String jsonStr = null;
@@ -48,22 +61,26 @@ public class MissionUtil {
 		}
 		return null;
 	}
+	
 	/**
 	 * 
 	 * @param type 为1时，获得任务列表URL 为2时，获得任务详情URL
 	 * @param id
 	 * @return url 
 	 */
-	private static String getUrl(int type ,int id){
+	private static String getUrl(int type ,Object id){
 		url.delete(0, url.length());
 		switch (type) {
 		case URL_LIST://获取任务列表
-			url.append(WeiboConfig.getValue("taskListURL")
+			url.append(WeiboConfig.getValue("mission.list")
 					).append(id);
 			break;
 		case URL_INFO://获取任务详情
-			url.append(WeiboConfig.getValue("taskInfoURL")
+			url.append(WeiboConfig.getValue("mission.info")
 					).append(id);
+			break;
+		case URL_CHECK:
+			url.append(WeiboConfig.getValue("bind.check")).append(id);
 			break;
 		default: 
 			break;
@@ -88,5 +105,42 @@ public class MissionUtil {
 			Log.e("MISSION_ERROR",e.getMessage());
 		}
 		return null;
+	}
+	/**
+	 * @param uid
+	 */
+	public static Integer checkBind(String uid) {
+		GetMethod method = new GetMethod(getUrl(URL_CHECK,uid));
+		Integer handlerId = -1;
+		try {
+			client.executeMethod(method);
+			handlerId = Integer.parseInt(method.getResponseBodyAsString());
+		}catch (Exception e) {
+			Log.e("BIND_ERROR",e.getMessage());
+		}
+		return handlerId;
+	}
+
+	/**
+	 * @param userid
+	 * @param userName
+	 * @param password
+	 * @return
+	 */
+	public static Integer bind(String userid, String userName,
+			String password,String weiboName) {
+		url.delete(0, url.length());
+		url.append(WeiboConfig.getValue("bind.bind")).append("?userName=").append(
+				userName).append("&password=").append(password).append("&uid=").append(
+						userid).append("&weiboName=").append(weiboName);
+		GetMethod method = new GetMethod(url.toString());
+		Integer result = -1;
+		try{
+			client.executeMethod(method);
+			result = Integer.parseInt(method.getResponseBodyAsString());
+		}catch(Exception e){
+			Log.e("BIND_ERROR",e.getMessage());
+		}
+		return result;
 	}
 }

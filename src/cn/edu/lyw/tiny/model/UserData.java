@@ -18,6 +18,11 @@ import com.sina.weibo.sdk.auth.Oauth2AccessToken;
  */
 public class UserData implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -725132346781179041L;
+
 	/** access token. */
 	private String token;
 

@@ -11,23 +11,48 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginBottom="40dp" >
+        android:gravity="center" >
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/tinyweibologo" />
+            android:src="@drawable/tinyweibologo_bak" />
     </LinearLayout>
 
+         <EditText
+        android:id="@+id/bind_username_edit"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/login_editbox"
+        android:hint="微博管理系统账号"
+        android:singleLine="true"
+        android:textColor="#000"
+        android:textSize="15sp" />
+         
+         <EditText
+	        android:id="@+id/bind_passwd_edit"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="20dp"
+	        android:layout_marginRight="20dp"
+	        android:layout_marginTop="25dp"
+	        android:background="@drawable/login_editbox"
+	        android:hint="密码 "
+	        android:inputType="textWebPassword"
+	        android:singleLine="true"
+	        android:textColor="#000"
+	        android:textSize="15sp" />
     <Button
         android:id="@+id/btn_bind"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/btn_style_green"
         android:gravity="center"
-        android:onClick="welcome_login"
+        android:onClick="bind_check"
         android:paddingLeft="130dp"
         android:paddingRight="130dp"
         android:text="@string/bind"

@@ -226,5 +226,5 @@
     <!-- bind -->
     <string name="bind_title">绑定微博管理系统账号</string>
     <string name="bind_warn">如果没有账号，可联系管理员进行分配</string>
-    <string name="bind">确认绑定</string>
+    <string name="bind">绑定</string>
 </resources>

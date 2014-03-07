@@ -1153,7 +1153,7 @@ public class MainWeibo extends Activity implements ConstantUtil {
 
 			@Override
 			protected Void doInBackground(Void... params) {
-				listmap = MissionUtil.getMissionList(2);
+				listmap = MissionUtil.getMissionList(userData.getHandlerId());
 				if(listmap ==null){
 					listmap = new ArrayList<Map<String,Object>>();
 				}
