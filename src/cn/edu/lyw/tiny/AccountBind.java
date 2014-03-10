@@ -2,7 +2,6 @@ package cn.edu.lyw.tiny;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
@@ -130,14 +129,8 @@ public class AccountBind extends Activity {
 	protected void enterMainWeibo(Integer handlerId) {
 		userData.setHandlerId(handlerId);
 		UserDataUtil.updateUserData(AccountBind.this, userData);
-		Intent intent;
-		if(userData.isFirstrun()){
-			intent = new Intent(this, Whatsnew.class);
-		}else{
-			intent = new Intent(this,MainWeibo.class);
-		}
-		startActivity(intent);
 		hideSpiner();
+		setResult(RESULT_OK);
 		finish();
 	}
 	private void hideSpiner(){

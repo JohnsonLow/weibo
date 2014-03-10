@@ -394,6 +394,10 @@ public class MainWeibo extends Activity implements ConstantUtil {
 			if (resultCode == RESULT_OK) {// result is ok
 				loadTimeline(data.getIntExtra(TIMELINE_TYPE, TIMELINE_PUBLIC));
 			}
+		} else if(requestCode == REQUEST_ACCOUNT_BIND){
+			if(resultCode == RESULT_OK){
+				showTaskList();
+			}
 		}
 	}
 
@@ -1148,7 +1152,7 @@ public class MainWeibo extends Activity implements ConstantUtil {
 	
 	private void showTaskList(){
 		final int handlerId = userData.getHandlerId();
-		if(handlerId<0){
+		if(handlerId<=0){
 			Intent intent = new Intent(MainWeibo.this, AccountBind.class);
 			startActivityForResult(intent, REQUEST_ACCOUNT_BIND);
 			return;
