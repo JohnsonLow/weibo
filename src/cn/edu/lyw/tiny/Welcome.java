@@ -70,7 +70,7 @@ public class Welcome extends Activity {
 	 * 进入主界面
 	 */
 	private void enterCheckBind() {
-		Intent intent = new Intent(Welcome.this, AccountBind.class);
+		Intent intent = new Intent(Welcome.this, Whatsnew.class);
 		startActivity(intent);
 		if(mSpinner.isShowing()){
 			mSpinner.dismiss();

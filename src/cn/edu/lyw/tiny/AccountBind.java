@@ -50,6 +50,7 @@ public class AccountBind extends Activity {
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if(keyCode == KeyEvent.KEYCODE_BACK){
+			setResult(RESULT_CANCELED);
 			finish();
 		}
 		return true;
@@ -67,6 +68,8 @@ public class AccountBind extends Activity {
 					case -3 : msg="该系统账号已被其他微博绑定，不可重复绑定"; break;
 				}
 			}
+		}else{
+			
 		}
 		hideSpiner();
 		ToastUtil.showShortToast(getApplicationContext(), msg);

@@ -40,14 +40,10 @@ public class Appstart extends Activity {
 						String localToken = userdata.getToken();
 						String localExpiresIn = userdata.getExpirestime();
 						if (UserDataUtil.isTokenValid(localToken, localExpiresIn)) {// token还有效
-							if(userdata.getHandlerId() > 0){
-								if (userdata.isFirstrun()) {// 第一次运行，进入欢迎界面
-									intent = new Intent(Appstart.this, Whatsnew.class);
-								} else {// 不是第一次运行，进入主界面
-									intent = new Intent(Appstart.this, MainWeibo.class);
-								}
-							}else{
-								intent = new Intent(Appstart.this,AccountBind.class);
+							if (userdata.isFirstrun()) {// 第一次运行，进入欢迎界面
+								intent = new Intent(Appstart.this, Whatsnew.class);
+							} else {// 不是第一次运行，进入主界面
+								intent = new Intent(Appstart.this, MainWeibo.class);
 							}
 						} else {// 无效，重新授权登陆
 							intent = new Intent(Appstart.this, Welcome.class);

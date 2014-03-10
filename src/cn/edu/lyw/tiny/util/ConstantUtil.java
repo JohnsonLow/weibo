@@ -157,5 +157,8 @@ public interface ConstantUtil {
 
 	/** 意见反馈 */
 	public final int WRITE_WEIBO_TYPE_SUGGESTION = 0x62;
+	
+	/** 发送任务绑定的请求*/
+	public final int REQUEST_ACCOUNT_BIND = 0x70;
 
 }

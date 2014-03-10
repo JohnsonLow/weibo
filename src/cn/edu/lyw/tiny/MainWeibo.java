@@ -1147,13 +1147,19 @@ public class MainWeibo extends Activity implements ConstantUtil {
 	}
 	
 	private void showTaskList(){
+		final int handlerId = userData.getHandlerId();
+		if(handlerId<0){
+			Intent intent = new Intent(MainWeibo.this, AccountBind.class);
+			startActivityForResult(intent, REQUEST_ACCOUNT_BIND);
+			return;
+		}
 		taskView.findViewById(R.id.rlTaskLoading).setVisibility(View.VISIBLE);
 		taskView.findViewById(R.id.noTask).setVisibility(View.GONE);
 		new AsyncTask<Void, Void, Void>() {
 
 			@Override
 			protected Void doInBackground(Void... params) {
-				listmap = MissionUtil.getMissionList(userData.getHandlerId());
+				listmap = MissionUtil.getMissionList(handlerId);
 				if(listmap ==null){
 					listmap = new ArrayList<Map<String,Object>>();
 				}
