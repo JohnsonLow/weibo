@@ -141,7 +141,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
                 android:padding="8dp"
-                android:text="专业起凡团队"
+                android:text="candice"
                 android:textColor="#000"
                 android:textSize="15sp" />
         </RelativeLayout>
@@ -181,7 +181,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
                 android:padding="8dp"
-                android:text="炮神"
+                android:text="candice"
                 android:textColor="#000"
                 android:textSize="15sp" />
         </RelativeLayout>
@@ -202,7 +202,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="8dp"
-            android:text="China ITElite 版权所有"
+            android:text="candice 版权所有"
             android:textColor="#000"
             android:textSize="12sp" />
 
@@ -212,7 +212,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="8dp"
-            android:text="Copyright © 2012 hongfu Xiaoqu Corp.All Rights Resverved. "
+            android:text="Copyright © 2012 Liuyuwei Corp.All Rights Resverved. "
             android:textColor="#000"
             android:textSize="12sp" />
     </LinearLayout>

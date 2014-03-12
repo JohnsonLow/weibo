@@ -1,9 +1,3 @@
-/**
- * TinyWeibo 微微博 
- * Copyright 2012 China ITElite Team
- * All Rights Reserved.
- * Created on 2012-12-20 23:53:31
- */
 package cn.edu.lyw.tiny;
 
 import java.util.ArrayList;
@@ -22,14 +16,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 /**
- * @filename Whatsnew.java
- * @package cn.edu.csu.iteliter
- * @project TinyWeibo 微微博
  * @description 欢迎界面
- * @author 孟丹
- * @team China ITElite Team
- * @email 495179346@qq.com
- * @updatetime 2012-12-21 下午3:11:59
  * @version 1.0
  * 
  */

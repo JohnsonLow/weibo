@@ -309,7 +309,7 @@
                 android:textSize="15sp" />
 
             <TextView
-                android:id="@+id/de_task_sponsorName"
+                android:id="@+id/de_task_hanName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -383,9 +383,26 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="处理信息"
+            android:text="处理记录"
             android:textColor="#000"
             android:layout_margin="9dp"
             android:textSize="20sp" />
+         <RelativeLayout
+             android:id="@+id/no_handle_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/preference_first_item"
+            android:clickable="true"
+            android:gravity="center_vertical" >
+	         <TextView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_centerHorizontal="true"
+	            android:layout_centerVertical="true"
+	            android:text="暂无处理记录"
+	            android:textColor="#000"
+	            android:layout_margin="9dp"
+	            android:textSize="20sp" />
+         </RelativeLayout>
 </LinearLayout>
 </ScrollView>

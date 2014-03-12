@@ -1,23 +1,10 @@
-/**
- * TinyWeibo 微微博 
- * Copyright 2012 China ITElite Team
- * All Rights Reserved.
- * Created on 2012-12-20 23:53:31
- */
 package cn.edu.lyw.tiny.util;
 
 import weibo4j.http.BASE64Decoder;
 import weibo4j.http.BASE64Encoder;
 
 /**
- * @filename EncryptDecrypt.java
- * @package cn.edu.csu.iteliter.util
- * @project TinyWeibo 微微博
  * @description 加密解密的工具类
- * @author 胡家威
- * @team China ITElite Team
- * @email yinger090807@qq.com
- * @updatetime 2012-12-21 上午10:58:40
  * @version 1.0
  * 
  */

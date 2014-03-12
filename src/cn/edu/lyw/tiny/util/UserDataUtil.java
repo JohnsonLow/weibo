@@ -69,7 +69,7 @@ public class UserDataUtil {
 		SharedPreferences pref = context.getSharedPreferences(ConstantUtil.TINYWEIBO, Context.MODE_PRIVATE);
 		synchronized (UserDataUtil.class) {
 			if(userData == null){
-				userData = JSONUtils.getObject(pref.getString(USERDATA, ""), UserData.class);
+				userData = JSONUtils.getObject(pref.getString(USERDATA, null), UserData.class);
 			}
 		}
 		return userData;

@@ -1,9 +1,3 @@
-/**
- * TinyWeibo 微微博 
- * Copyright 2012 China ITElite Team
- * All Rights Reserved.
- * Created on 2012-12-20 23:53:31
- */
 package cn.edu.lyw.tiny;
 
 import java.io.File;
@@ -43,14 +37,7 @@ import com.aviary.android.feather.library.utils.ImageLoader.ImageSizes;
 import com.aviary.android.feather.library.utils.StringUtils;
 
 /**
- * @filename WeiboWriteImage.java
- * @package cn.edu.csu.iteliter
- * @project TinyWeibo 微微博
  * @description 写微博的图片选择和处理界面
- * @author 胡家威
- * @team China ITElite Team
- * @email yinger090807@qq.com
- * @updatetime 2012-12-21 下午3:18:39
  * @version 1.0
  * 
  */

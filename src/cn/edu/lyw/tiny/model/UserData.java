@@ -1,9 +1,3 @@
-/**
- * TinyWeibo 微微博 
- * Copyright 2012 China ITElite Team
- * All Rights Reserved.
- * Created on 2012-12-21 11:48:06
- */
 package cn.edu.lyw.tiny.model;
 
 import java.io.Serializable;
@@ -66,6 +60,12 @@ public class UserData implements Serializable{
 		this.userid = userid;
 	}
 	
+	/**
+	 * 
+	 */
+	public UserData() {
+		// TODO Auto-generated constructor stub
+	}
 	public UserData(Oauth2AccessToken token){
 		this(token.getToken(),String.valueOf(token.getExpiresTime()),token.getUid());
 	}

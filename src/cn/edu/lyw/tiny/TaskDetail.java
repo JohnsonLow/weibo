@@ -1,6 +1,8 @@
 
 package cn.edu.lyw.tiny;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import android.app.Activity;
@@ -12,6 +14,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import cn.edu.lyw.tiny.util.JSONUtils;
 import cn.edu.lyw.tiny.util.MissionUtil;
 
 /**
@@ -22,7 +25,7 @@ public class TaskDetail extends Activity implements OnClickListener{
 	private Button bt_taskDetail_back;
 	private int taskId;
 	private Map<String,Object> missionInfo ;
-	private Map<String,Object> handleInfo ;
+	private List<Map<String,Object>> handleInfo ;
 	private static final String KEY_MISSION = "missionInfo";
 	private static final String KEY_HANDLE = "handleInfo";
 	private static final String DEFAULT_TEXT = "";
@@ -36,6 +39,38 @@ public class TaskDetail extends Activity implements OnClickListener{
 		findViewById(R.id.rlTaskDeLoading).setVisibility(View.VISIBLE);
 		initInfos();
 	}
+	private void showHandleInfo(List<Map<String, Object>> handleInfo){
+		if(handleInfo != null){
+			findViewById(R.id.no_handle_layout).setVisibility(View.GONE);
+			LinearLayout linearLayout = (LinearLayout) findViewById(R.id.llo_task_detail);
+			//得到系统layout资源文件,动态加载layout
+			LayoutInflater inflater = (LayoutInflater)getSystemService(LAYOUT_INFLATER_SERVICE);
+			for(int i=0,len=handleInfo.size();i<len;i++){
+				View layout = inflater.inflate(R.layout.handle_info_detail, null);
+				Map<String,Object> map = handleInfo.get(i);
+				((TextView)layout.findViewById(R.id.de_handle_handleTime)).setText(
+						map.get("handleTime").toString());
+				((TextView)layout.findViewById(R.id.de_handle_content)).setText(
+						map.get("content").toString());
+				((TextView)layout.findViewById(R.id.de_handle_addTime)).setText(
+						map.get("addTime").toString());
+				((TextView)layout.findViewById(R.id.de_handle_toName)).setText(
+						map.get("toName").toString());
+				((TextView)layout.findViewById(R.id.de_handle_toDep)).setText(
+						map.get("toDep").toString());
+				((TextView)layout.findViewById(R.id.de_handle_handlerName)).setText(
+						map.get("handlerName").toString());
+				((TextView)layout.findViewById(R.id.de_handle_handlerDep)).setText(
+						map.get("handlerDep").toString());
+				((TextView)layout.findViewById(R.id.de_handle_status)).setText(
+						MissionUtil.getHandlerType(map.get("handleType")));
+				linearLayout.addView(layout);
+			}
+		}else{
+			findViewById(R.id.no_handle_layout).setVisibility(View.VISIBLE);
+			
+		}
+	}
 
 	/**
 	 * 
@@ -43,31 +78,35 @@ public class TaskDetail extends Activity implements OnClickListener{
 	private void initInfos() {
 		taskId = getIntent().getIntExtra("taskId", 0);
 		
-		LinearLayout linearLayout = (LinearLayout) findViewById(R.id.llo_task_detail);
-		//得到系统layout资源文件,动态加载layout
-		LayoutInflater inflater = (LayoutInflater)getSystemService(LAYOUT_INFLATER_SERVICE);
 		new AsyncTask<Void, Void, Void>() {
 
+			@SuppressWarnings("unchecked")
 			@Override
 			protected Void doInBackground(Void... params) {
-				Map<String,Map<String,Object>> infos = MissionUtil.getMission(taskId);
+				Map<String,Object> infos = MissionUtil.getMission(taskId);
 				if(infos != null){
-					missionInfo = infos.get(KEY_MISSION);
-					handleInfo = infos.get(KEY_HANDLE);
+					missionInfo = (Map<String, Object>) infos.get(KEY_MISSION);
+					if(infos.get(KEY_HANDLE) != null){
+						handleInfo = JSONUtils.getObject(infos.get(KEY_HANDLE).toString(),List.class);
+					}
 				}
 				return null;
 			}
 			protected void onPostExecute(Void result) {
 				findViewById(R.id.rlTaskDeLoading).setVisibility(View.GONE);
 				setText(R.id.de_task_title,missionInfo.get("title"));
-//				setText(R.id.de_task)
-				if(handleInfo != null && handleInfo.size()>0){
-					
-				}
-			};
+				setText(R.id.de_task_notes,missionInfo.get("content"));
+				setText(R.id.de_task_createTime,missionInfo.get("createTime"));
+				setText(R.id.de_task_type,missionInfo.get("type"));
+				setText(R.id.de_task_commitTime,missionInfo.get("de_task_commitTime"));
+				setText(R.id.de_task_sponsorName,missionInfo.get("sponsorName"));
+				setText(R.id.de_task_sponsorDep,missionInfo.get("sponsorDep"));
+				setText(R.id.de_task_hanName,missionInfo.get("handlerName"));
+				setText(R.id.de_task_handlerDep,missionInfo.get("handlerDep"));
+				setText(R.id.de_task_status,MissionUtil.getStatus(missionInfo.get("status")));
+				showHandleInfo(handleInfo);
+			}
 		}.execute();
-		View layout = inflater.inflate(R.layout.handle_info_detail, null);
-		linearLayout.addView(layout);
 		bt_taskDetail_back.setOnClickListener(TaskDetail.this);
 		
 	}

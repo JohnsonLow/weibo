@@ -1,7 +1,6 @@
 package cn.edu.lyw.tiny;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +12,9 @@ import weibo4j.model.StatusWapper;
 import weibo4j.model.User;
 import weibo4j.model.WeiboException;
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -49,6 +51,7 @@ import cn.edu.lyw.tiny.customview.TimelineListView;
 import cn.edu.lyw.tiny.customview.TimelineListView.OnRefreshListener;
 import cn.edu.lyw.tiny.model.UserData;
 import cn.edu.lyw.tiny.model.WeiboImage;
+import cn.edu.lyw.tiny.service.NotifyService;
 import cn.edu.lyw.tiny.util.CacheUtil;
 import cn.edu.lyw.tiny.util.ConstantUtil;
 import cn.edu.lyw.tiny.util.MissionUtil;
@@ -133,7 +136,10 @@ public class MainWeibo extends Activity implements ConstantUtil {
 
 	/** 设置界面 */
 	private View tabSettings;
-
+	
+	private NotificationManager notMan;
+	private Notification noti;
+	private PendingIntent pendIntent;
 	/*
 	 * (non-Javadoc)创建界面的回调方法
 	 * 
@@ -210,6 +216,19 @@ public class MainWeibo extends Activity implements ConstantUtil {
 		initTaskList();
 		initTabSettingsUI();
 		loadTimeline(TIMELINE_FRIENDS);
+		notMan = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+		NotifyService.startNotifyService(userData.getToken(), userData.getUserid());
+//		showNotify();
+	}
+	public void showNotify(){
+		
+		pendIntent = PendingIntent.getActivity(getApplicationContext(), TIMELINE_MENTIONS, getIntent(), 0);
+		noti = new Notification();
+		noti.icon = R.drawable.tinyweibo_96;
+		noti.tickerText = "你有新的消息";
+		noti.defaults = Notification.DEFAULT_SOUND;
+		noti.setLatestEventInfo(MainWeibo.this, "MyIMSYS", "消息通知", pendIntent );
+		notMan.notify(0, noti); 
 	}
 
 	/**

@@ -1,9 +1,3 @@
-/**
- * TinyWeibo 微微博 
- * Copyright 2012 China ITElite Team
- * All Rights Reserved.
- * Created on 2012-12-20 23:53:32
- */
 package cn.edu.lyw.tiny.util;
 
 import java.io.File;
@@ -16,14 +10,7 @@ import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
 
 /**
- * @filename CacheUtil.java
- * @package cn.edu.csu.iteliter.util
- * @project TinyWeibo 微微博
  * @description 缓存数据处理工具类
- * @author 胡家威
- * @team China ITElite Team
- * @email yinger090807@qq.com
- * @updatetime 2012-12-20 下午11:57:52
  * @version 1.0
  * 
  */

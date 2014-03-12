@@ -1,9 +1,3 @@
-/**
- * TinyWeibo 微微博 
- * Copyright 2012 China ITElite Team
- * All Rights Reserved.
- * Created on 2012-12-20 23:53:32
- */
 package cn.edu.lyw.tiny;
 
 import android.app.Activity;
@@ -16,14 +10,7 @@ import cn.edu.lyw.tiny.util.ToastUtil;
 import cn.edu.lyw.tiny.util.UserDataUtil;
 
 /**
- * @filename DialogSettingsExit.java
- * @package cn.edu.csu.iteliter
- * @project TinyWeibo 微微博
  * @description 设置界面的退出对话框
- * @author 胡家威
- * @team China ITElite Team
- * @email yinger090807@qq.com
- * @updatetime 2012-12-21 下午12:39:29
  * @version 1.0
  * 
  */

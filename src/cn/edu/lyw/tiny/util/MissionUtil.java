@@ -1,8 +1,3 @@
-/**
- *MissionUtil.java
- * Administrator
- * 下午4:53:52
- */
 package cn.edu.lyw.tiny.util;
 
 import java.util.List;
@@ -10,15 +5,11 @@ import java.util.Map;
 
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.GetMethod;
-import org.apache.commons.httpclient.methods.PostMethod;
-
 import weibo4j.util.WeiboConfig;
 import android.util.Log;
 
 /**
  * @description  
- * @author lyw
- * @updatetime 2014-3-3 下午4:53:52
  * @version 1.0
  * 
  */
@@ -92,7 +83,7 @@ public class MissionUtil {
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public static Map<String,Map<String, Object>> getMission(
+	public static Map<String,Object> getMission(
 			int taskId) {
 		GetMethod method = new GetMethod(getUrl(URL_INFO,taskId));
 		try {
@@ -142,5 +133,34 @@ public class MissionUtil {
 			Log.e("BIND_ERROR",e.getMessage());
 		}
 		return result;
+	}
+	public static String getStatus(Object obj){
+		if(obj != null){
+			Integer status = (Integer)obj;
+			switch(status.intValue()){
+				case 1:
+					return "待处理";
+				case 2:
+					return "处理中";
+				case 3:
+					return "已完成";
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * @param object
+	 * @return
+	 */
+	public static String getHandlerType(Object object) {
+		if(object != null){
+			Integer type = (Integer) object;
+			switch(type){
+			case 1001: return "转发";
+			case 1002: return "完成";
+			}
+		}
+		return "";
 	}
 }

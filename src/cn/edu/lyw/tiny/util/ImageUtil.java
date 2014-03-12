@@ -1,9 +1,3 @@
-/**
- * TinyWeibo 微微博 
- * Copyright 2012 China ITElite Team
- * All Rights Reserved.
- * Created on 2012-12-20 23:53:31
- */
 package cn.edu.lyw.tiny.util;
 
 import android.graphics.Bitmap;
@@ -18,14 +12,7 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 
 /**
- * @filename ImageUtil.java
- * @package cn.edu.csu.iteliter.util
- * @project TinyWeibo 微微博
  * @description 图片处理工具类
- * @author 胡家威
- * @team China ITElite Team
- * @email yinger090807@qq.com
- * @updatetime 2012-12-21 上午11:00:57
  * @version 1.0
  * 
  */

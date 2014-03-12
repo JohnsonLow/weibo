@@ -1,9 +1,3 @@
-/**
- * TinyWeibo 微微博 
- * Copyright 2012 China ITElite Team
- * All Rights Reserved.
- * Created on 2012-12-20 23:53:33
- */
 package cn.edu.lyw.tiny;
 
 import android.app.Activity;
@@ -14,14 +8,7 @@ import android.view.View;
 import cn.edu.lyw.tiny.util.ConstantUtil;
 
 /**
- * @filename HomeWeiboWriteTopRightDialog.java
- * @package cn.edu.csu.iteliter
- * @project TinyWeibo 微微博
  * @description 微博图片类型的选择界面
- * @author 胡家威
- * @team China ITElite Team
- * @email yinger090807@qq.com
- * @updatetime 2012-12-21 下午2:10:14
  * @version 1.0
  * 
  */

@@ -1,23 +1,10 @@
-/**
- * TinyWeibo 微微博 
- * Copyright 2012 China ITElite Team
- * All Rights Reserved.
- * Created on 2012-12-20 23:53:32
- */
 package cn.edu.lyw.tiny.model;
 
 import android.graphics.Bitmap;
 import android.widget.ImageView;
 
 /**
- * @filename WeiboImage.java
- * @package cn.edu.csu.iteliter.model
- * @project TinyWeibo 微微博
  * @description 微博图片
- * @author 胡家威
- * @team China ITElite Team
- * @email yinger090807@qq.com
- * @updatetime 2012-12-21 上午11:48:58
  * @version 1.0
  * 
  */

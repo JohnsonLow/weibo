@@ -1,9 +1,3 @@
-/**
- * TinyWeibo 微微博 
- * Copyright 2012 China ITElite Team
- * All Rights Reserved.
- * Created on 2012-12-20 23:53:32
- */
 package cn.edu.lyw.tiny.util;
 
 import android.content.Context;
@@ -11,14 +5,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo.State;
 
 /**
- * @filename NetworkUtil.java
- * @package cn.edu.csu.iteliter.util
- * @project TinyWeibo 微微博
  * @description 网络处理工具类
- * @author 胡家威
- * @team China ITElite Team
- * @email yinger090807@qq.com
- * @updatetime 2012-12-21 上午11:27:25
  * @version 1.0
  * 
  */

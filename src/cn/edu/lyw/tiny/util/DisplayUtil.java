@@ -1,20 +1,7 @@
-/**
- * TinyWeibo 微微博 
- * Copyright 2012 China ITElite Team
- * All Rights Reserved.
- * Created on 2012-12-20 23:53:31
- */
 package cn.edu.lyw.tiny.util;
 
 /**
- * @filename DisplayUtil.java
- * @package cn.edu.csu.iteliter.util
- * @project TinyWeibo 微微博
  * @description 显示数据值的转换工具类
- * @author 胡家威
- * @team China ITElite Team
- * @email yinger090807@qq.com
- * @updatetime 2012-12-21 上午00:53:07
  * @version 1.0
  * 
  */

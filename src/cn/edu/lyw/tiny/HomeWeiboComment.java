@@ -1,9 +1,3 @@
-/**
- * TinyWeibo 微微博 
- * Copyright 2012 China ITElite Team
- * All Rights Reserved.
- * Created on 2012-12-20 23:53:32
- */
 package cn.edu.lyw.tiny;
 
 import weibo4j.Comments;
@@ -30,14 +24,7 @@ import cn.edu.lyw.tiny.util.ConstantUtil;
 import cn.edu.lyw.tiny.util.ToastUtil;
 
 /**
- * @filename HomeWeiboComment.java
- * @package cn.edu.csu.iteliter
- * @project TinyWeibo 微微博
  * @description 评论微博的界面
- * @author 胡家威
- * @team China ITElite Team
- * @email yinger090807@qq.com
- * @updatetime 2012-12-21 下午1:53:12
  * @version 1.0
  * 
  */

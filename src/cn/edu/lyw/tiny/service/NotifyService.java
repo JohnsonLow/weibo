@@ -1,17 +1,19 @@
-/**
- *NotifyService.java
- * Administrator
- * 下午1:46:34
- */
 package cn.edu.lyw.tiny.service;
+
+import java.util.Timer;
+import java.util.TimerTask;
+
+import cn.edu.lyw.tiny.task.NotificationTask;
 
 /**
  * @description  
- * @author lyw
- * @updatetime 2014-3-4 下午1:46:34
  * @version 1.0
  * 
  */
 public class NotifyService {
-
+	public static void startNotifyService(String token,String uid){
+		Timer timer =  new Timer();
+		TimerTask task = new NotificationTask(token,uid);
+		timer.scheduleAtFixedRate(task, 100,30000);
+	}
 }
