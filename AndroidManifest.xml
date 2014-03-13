@@ -96,6 +96,11 @@
         <activity
             android:name="cn.edu.lyw.tiny.DialogExit"
             android:theme="@style/MyDialogStyle" >
+            
+        </activity>
+        <activity
+            android:name="cn.edu.lyw.tiny.NotificationActivity"
+            android:theme="@style/MyDialogStyle" >
         </activity>
          <activity
             android:name="cn.edu.lyw.tiny.AccountBind"

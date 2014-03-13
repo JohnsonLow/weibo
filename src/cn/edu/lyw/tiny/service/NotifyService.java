@@ -11,9 +11,13 @@ import cn.edu.lyw.tiny.task.NotificationTask;
  * 
  */
 public class NotifyService {
-	public static void startNotifyService(String token,String uid){
-		Timer timer =  new Timer();
-		TimerTask task = new NotificationTask(token,uid);
-		timer.scheduleAtFixedRate(task, 100,30000);
+	public static boolean flag = true;
+	public synchronized static void startNotifyService(String token,String uid){
+		if(flag){
+			Timer timer =  new Timer();
+			TimerTask task = new NotificationTask(token,uid);
+			timer.scheduleAtFixedRate(task, 100,30000);
+			flag = false;
+		}
 	}
 }

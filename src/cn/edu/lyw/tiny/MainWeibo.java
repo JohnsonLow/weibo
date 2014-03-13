@@ -15,6 +15,7 @@ import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.app.PendingIntent.CanceledException;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -87,7 +88,7 @@ public class MainWeibo extends Activity implements ConstantUtil {
 	public MediaPlayer musicPlayer;
 
 	/** viewpager组件 */
-	private ViewPager mTabPager;
+	public ViewPager mTabPager;
 
 	/** tab图片 */
 	private ImageView mTabImg;//
@@ -136,7 +137,6 @@ public class MainWeibo extends Activity implements ConstantUtil {
 
 	/** 设置界面 */
 	private View tabSettings;
-	
 	private NotificationManager notMan;
 	private Notification noti;
 	private PendingIntent pendIntent;
@@ -218,18 +218,28 @@ public class MainWeibo extends Activity implements ConstantUtil {
 		loadTimeline(TIMELINE_FRIENDS);
 		notMan = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 		NotifyService.startNotifyService(userData.getToken(), userData.getUserid());
-//		showNotify();
 	}
 	public void showNotify(){
-		
-		pendIntent = PendingIntent.getActivity(getApplicationContext(), TIMELINE_MENTIONS, getIntent(), 0);
+		notMan = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+		Intent intent = new Intent(MainWeibo.this, NotificationActivity.class);
+		intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+		intent.setAction(Intent.ACTION_MAIN);
+		intent.addCategory(Intent.CATEGORY_LAUNCHER);
+		pendIntent = PendingIntent.getActivity(MainWeibo.this, REQUEST_WEIBO_TYPE,intent, 0);
 		noti = new Notification();
 		noti.icon = R.drawable.tinyweibo_96;
 		noti.tickerText = "你有新的消息";
-		noti.defaults = Notification.DEFAULT_SOUND;
-		noti.setLatestEventInfo(MainWeibo.this, "MyIMSYS", "消息通知", pendIntent );
+		noti.flags = Notification.FLAG_AUTO_CANCEL | Notification.FLAG_ONGOING_EVENT |
+				 Notification.FLAG_SHOW_LIGHTS ;
+		noti.defaults = Notification.DEFAULT_SOUND | Notification.DEFAULT_LIGHTS;
+		noti.setLatestEventInfo(MainWeibo.this, getText(R.string.app_name), "你有新的消息", pendIntent);
 		notMan.notify(0, noti); 
 	}
+	public void cancleNotification() {
+		notMan.cancel(0);
+		
+	}
+	
 
 	/**
 	 * The listener interface for receiving myOnClick events. The class that is interested in processing a myOnClick event implements this
@@ -651,7 +661,7 @@ public class MainWeibo extends Activity implements ConstantUtil {
 	 * @param type
 	 *            微博列表的类型
 	 */
-	private void loadTimeline(final int type) {
+	public void loadTimeline(final int type) {
 		ListAdapter listAdapter = null;
 		if (type == TIMELINE_PUBLIC) {
 			listAdapter = lvPublicTimeline.getAdapter();
@@ -1221,4 +1231,5 @@ public class MainWeibo extends Activity implements ConstantUtil {
 			startActivity(intent);
 		}
 	}
+
 }
