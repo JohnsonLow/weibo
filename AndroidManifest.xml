@@ -78,10 +78,6 @@
             android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
         <activity
-            android:name="cn.edu.lyw.tiny.ShakeWeibo"
-            android:theme="@android:style/Theme.NoTitleBar" >
-        </activity>
-        <activity
             android:name="cn.edu.lyw.tiny.SettingsAboutUs"
             android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
