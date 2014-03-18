@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -63,18 +64,20 @@ public class AccountBind extends Activity {
 			}else{
 				switch(handlerId){
 					case -1 : msg = "输入的账号不存在，请重新输入"; break;
-					case -2 : msg="密码错误，请重新输入"; break;
-					case -3 : msg="该系统账号已被其他微博绑定，不可重复绑定"; break;
+					case -2 : msg = "密码错误，请重新输入"; break;
+					case -3 : msg = "该系统账号已被其他微博绑定，不可重复绑定"; break;
+					case -4 : msg = "请绑定微博管理系统的账号"; break;
 				}
 			}
 		}else{
-			
+			msg = "请绑定微博管理系统的账号";
 		}
 		hideSpiner();
 		ToastUtil.showShortToast(getApplicationContext(), msg);
 	}
 	public void bind_check(View v){
 		mSpinner.setMessage("正在进行用户绑定");
+		mSpinner.show();
 		final String userName = getText(userNameEdit) ;
 		final String password = getText(passwordEdit);
 		if(StringUtility.isNotBlank(userName) && StringUtility.isNotBlank(password)){
@@ -85,11 +88,12 @@ public class AccountBind extends Activity {
 				}
 				@Override
 				protected Integer doInBackground(Void... params) {
+					Log.d("TTJT-TDSFSFSDFSFDS", userData.toString());
 					return MissionUtil.bind(userData.getUserid(),userName,
 							password,userData.getNickname());
 				}
 				
-			};
+			}.execute();
 		}else{
 			ToastUtil.showShortToast(getApplicationContext(), "用户名或密码不可为空");
 		}
