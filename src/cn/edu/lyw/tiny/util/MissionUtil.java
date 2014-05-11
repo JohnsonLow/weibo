@@ -30,6 +30,7 @@ public class MissionUtil {
 	 * 检查是否已绑定
 	 */
 	private static final int URL_CHECK = 3;
+	private static final int URL_COMMIT = 4;
 	
 	
 	/**
@@ -59,19 +60,23 @@ public class MissionUtil {
 	 * @param id
 	 * @return url 
 	 */
-	private static String getUrl(int type ,Object id){
+	private static String getUrl(int type ,Object... id){
 		url.delete(0, url.length());
 		switch (type) {
 		case URL_LIST://获取任务列表
 			url.append(WeiboConfig.getValue("mission.list")
-					).append(id);
+					).append(id[0]);
 			break;
 		case URL_INFO://获取任务详情
 			url.append(WeiboConfig.getValue("mission.info")
-					).append(id);
+					).append(id[0]);
 			break;
 		case URL_CHECK:
-			url.append(WeiboConfig.getValue("bind.check")).append(id);
+			url.append(WeiboConfig.getValue("bind.check")).append(id[0]);
+			break;
+		case URL_COMMIT:
+			url.append(WeiboConfig.getValue("mission.commit")).append("missionId=").append(
+					id[0]).append("&handler=").append(id[1]);
 			break;
 		default: 
 			break;
@@ -162,5 +167,19 @@ public class MissionUtil {
 			}
 		}
 		return "";
+	}
+
+	/**
+	 * @param taskId
+	 * @param userId
+	 */
+	public static void commitMission(Integer taskId, Integer userId) {
+		try {
+			GetMethod method = new GetMethod(getUrl(URL_COMMIT,taskId,userId));
+			client.executeMethod(method);
+		}catch(Exception e){
+			Log.e("COMMIT_ERROR",e.getMessage());
+		}
+		
 	}
 }

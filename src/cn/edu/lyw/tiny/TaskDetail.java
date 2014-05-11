@@ -16,6 +16,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import cn.edu.lyw.tiny.util.JSONUtils;
 import cn.edu.lyw.tiny.util.MissionUtil;
+import cn.edu.lyw.tiny.util.ToastUtil;
+import cn.edu.lyw.tiny.util.UserDataUtil;
 
 /**
  * 任务的详细信息以及处理信息
@@ -23,12 +25,14 @@ import cn.edu.lyw.tiny.util.MissionUtil;
 public class TaskDetail extends Activity implements OnClickListener{
 	
 	private Button bt_taskDetail_back;
+	private Button commitButton;
 	private int taskId;
 	private Map<String,Object> missionInfo ;
 	private List<Map<String,Object>> handleInfo ;
 	private static final String KEY_MISSION = "missionInfo";
 	private static final String KEY_HANDLE = "handleInfo";
 	private static final String DEFAULT_TEXT = "";
+	private Integer userId;//绑定管理后台用户id
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -36,8 +40,10 @@ public class TaskDetail extends Activity implements OnClickListener{
 		
 		//得到各个组件
 		bt_taskDetail_back = (Button) findViewById(R.id.bt_taskDetail_back);
+		commitButton = (Button) findViewById(R.id.bt_taskDetail_commit);
 		findViewById(R.id.rlTaskDeLoading).setVisibility(View.VISIBLE);
 		initInfos();
+		userId = UserDataUtil.readUserData(getApplicationContext()).getHandlerId();
 	}
 	private void showHandleInfo(List<Map<String, Object>> handleInfo){
 		if(handleInfo != null){
@@ -109,6 +115,7 @@ public class TaskDetail extends Activity implements OnClickListener{
 		}.execute();
 		bt_taskDetail_back.setOnClickListener(TaskDetail.this);
 		
+		
 	}
 
 	/**
@@ -124,7 +131,6 @@ public class TaskDetail extends Activity implements OnClickListener{
 		}
 		
 	}
-
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
@@ -133,6 +139,26 @@ public class TaskDetail extends Activity implements OnClickListener{
 			startActivity(intent);*/
 			finish();
 			break;
+		case R.id.bt_taskDetail_commit:
+			commitTask();
+			break;
 		}
+	}
+	/**
+	 * 
+	 */
+	private void commitTask() {
+		new AsyncTask<Void, Void, Void>() {
+
+			@SuppressWarnings("unchecked")
+			@Override
+			protected Void doInBackground(Void... params) {
+				MissionUtil.commitMission(taskId,userId);
+				return null;
+			}
+			protected void onPostExecute(Void result) {
+				ToastUtil.showShortToast(getApplicationContext(), "提交成功");
+			}
+		}.execute();
 	}
 }	

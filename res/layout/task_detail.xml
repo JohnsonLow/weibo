@@ -42,6 +42,17 @@
             android:text="任务详情"
             android:textColor="#ffffff"
             android:textSize="20sp" />
+         <Button
+            android:id="@+id/bt_taskDetail_commit"
+            android:layout_width="67dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/title_btn_right"
+            android:text="完成任务"
+            android:textColor="#fff"
+            android:textSize="15sp" />
     </RelativeLayout>
     <RelativeLayout
             android:id="@+id/rlTaskDeLoading"
