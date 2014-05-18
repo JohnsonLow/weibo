@@ -177,6 +177,7 @@ public class MissionUtil {
 		try {
 			GetMethod method = new GetMethod(getUrl(URL_COMMIT,taskId,userId));
 			client.executeMethod(method);
+			method.getResponseBodyAsString();
 		}catch(Exception e){
 			Log.e("COMMIT_ERROR",e.getMessage());
 		}

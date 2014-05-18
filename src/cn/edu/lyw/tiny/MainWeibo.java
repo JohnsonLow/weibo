@@ -1178,7 +1178,7 @@ public class MainWeibo extends Activity implements ConstantUtil {
 		datalist = (ListView) taskView.findViewById(R.id.datalist);
 	}
 	
-	private void showTaskList(){
+	public void showTaskList(){
 		final int handlerId = userData.getHandlerId();
 		if(handlerId<=0){
 			Intent intent = new Intent(MainWeibo.this, AccountBind.class);

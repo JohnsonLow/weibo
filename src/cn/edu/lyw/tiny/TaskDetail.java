@@ -1,7 +1,6 @@
 
 package cn.edu.lyw.tiny;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -139,18 +138,13 @@ public class TaskDetail extends Activity implements OnClickListener{
 			startActivity(intent);*/
 			finish();
 			break;
-		case R.id.bt_taskDetail_commit:
-			commitTask();
-			break;
 		}
 	}
 	/**
 	 * 
 	 */
-	private void commitTask() {
+	public void commitTask(View v) {
 		new AsyncTask<Void, Void, Void>() {
-
-			@SuppressWarnings("unchecked")
 			@Override
 			protected Void doInBackground(Void... params) {
 				MissionUtil.commitMission(taskId,userId);
@@ -158,6 +152,8 @@ public class TaskDetail extends Activity implements OnClickListener{
 			}
 			protected void onPostExecute(Void result) {
 				ToastUtil.showShortToast(getApplicationContext(), "提交成功");
+				finish();
+				MainWeibo.instance.showTaskList();
 			}
 		}.execute();
 	}
